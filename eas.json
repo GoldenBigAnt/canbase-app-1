@@ -1,0 +1,30 @@
+{
+  "cli": {
+    "version": ">= 12.6.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "ios-simulator": {
+      "extends": "development",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_BUILD_MAPBOX_SDK": "sk.eyJ1Ijoic2hvbHRvbXMiLCJhIjoiY202MG9oajVnMGYxMjJtcjBncGQyeTQzcyJ9._ky6jar1r6HMOYFf0fb8Xw"
+      }
+    },
+    "production": {}
+  },
+  "submit": {
+    "production": {}
+  }
+}
