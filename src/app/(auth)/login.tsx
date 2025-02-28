@@ -4,7 +4,9 @@ import { Wrapper } from "@/components";
 
 const Login: React.FC = () => {
   return (
-    <Wrapper isFullscreen>
+    <Wrapper 
+    // isFullscreen
+    >
       <LoginScreen />
     </Wrapper>
   );
