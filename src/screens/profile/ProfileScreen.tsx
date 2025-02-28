@@ -14,6 +14,7 @@ import { UPLOAD_URI } from "@/config/env";
 import { cardBGColorData, cardTextColorData } from "@/lib/color";
 import { isEmpty } from "@/lib/functions";
 import { cn } from "@/lib/utils";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const BadgeImage = require("@/assets/images/badge.png");
 const LogoWhite = require("@/assets/images/logo_white.png");
@@ -22,6 +23,8 @@ const CardLogo = require("@/assets/images/card_logo.png");
 const ProfileScreen: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
   const { club } = useAppSelector((state) => state.club);
+
+  const { top } = useSafeAreaInsets();
 
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -52,7 +55,11 @@ const ProfileScreen: React.FC = () => {
 
   return (
     <View className="w-full h-full">
-      <View className="relative overflow-hidden bg-[#00C978] rounded-b-xl">
+      {/* Header */}
+      <View
+        className="relative overflow-hidden bg-[#00C978] rounded-b-xl"
+        style={{ paddingTop: top }}
+      >
         <View className="flex flex-row justify-between items-center p-5">
           <Text className="font-extrabold	text-2xl text-white">Profil</Text>
           <Pressable
@@ -68,8 +75,14 @@ const ProfileScreen: React.FC = () => {
           placeholder="badge"
         />
       </View>
-      <ScrollView>
-        <View className="flex flex-col gap-3 m-5">
+      <ScrollView
+        className="p-5 flex flex-col"
+        contentContainerClassName="gap-5"
+      >
+        {/* {!isEmpty(user?.club) && 
+        <ProfileCard />
+        } */}
+        <View className="flex flex-col gap-3">
           {!isEmpty(user?.club) && (
             <Pressable className="group" onPress={flipCard}>
               <View className="aspect-[16/9]">
@@ -260,5 +273,25 @@ const ProfileScreen: React.FC = () => {
     </View>
   );
 };
+
+const ProfileCard = () => {
+  return <View className="w-full aspect-video bg-black/95 rounded-xl p-4 relative overflow-hidden">
+          <View className="flex flex-row items-center justify-end">
+            <Image
+              source={LogoWhite}
+              style={{ width: 24, height: 24 }}
+              contentFit="contain"
+            />
+          </View>
+
+          <View className="flex items-start justify-end grow gap-1 p-2">
+            <Text className="text-white font-semibold text-sm">@maxmustermann</Text>
+            <Text className="text-white text-sm">CSC Berlin</Text>
+            <Text className="text-white py-0.5 text-sm">ABCD-001-332</Text>
+          </View>
+
+          <Image source={CardLogo}  contentFit="contain" className="aspect-[158/104]" style={{width: '66%', height: '100%', position: 'absolute', bottom: 0, right: 0}} />
+        </View>
+}
 
 export default ProfileScreen;

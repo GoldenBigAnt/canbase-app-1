@@ -50,16 +50,16 @@ const OwnerScreen: React.FC = () => {
         <View style={styles.mainContainer}>
           <Card style={styles.cardContainer}>
             <View style={styles.cardHeaderContainer}>
-              <View style={styles.cardHeaderText}>
-                <Text style={styles.cardHeaderTitle}>Erste Schritte</Text>
-                <Text style={styles.cardHeaderBio}>
+              <View className="flex flex-col gap-1">
+                <Text className="text-base font-bold">Erste Schritte</Text>
+                <Text className="text-xs text-[#7F7F88]">
                   Erledige alle offenen Aufgaben, um Deinen Club weiter nach
                   vorne zu bringen.
                 </Text>
               </View>
-              <View className="flex flex-col gap-1 w-full">
+              <View className="flex flex-col gap-1">
                 <Progress.Bar
-                  height={8}
+                  height={9}
                   progress={progress}
                   color="black"
                   unfilledColor="#F5F5F5"
@@ -70,7 +70,7 @@ const OwnerScreen: React.FC = () => {
                 </Text>
               </View>
             </View>
-            <View className="flex flex-col justify-center">
+            <View className="flex flex-col">
               <ClubStatus
                 done={!isEmpty(club?.document)}
                 title="Satzung erstellen & hochladen"
@@ -132,37 +132,28 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   cardContainer: {
-    backgroundColor: "#ffffff",
-    padding: 0,
-    borderRadius: 12,
-    shadowColor: "#bebebe",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
+    backgroundColor: "#ffffff", // Add a background color
+    padding: 0, // Adjust padding for better appearance
+    borderRadius: 15,
+    shadowColor: "#bebebe", // Change shadow color to a darker shade
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25, // Adjust opacity for a softer shadow
+    shadowRadius: 3.5, // Adjust radius for a smoother shadow
+    elevation: 2, // Elevation for Android
   },
   cardHeaderContainer: {
     display: "flex",
     flexDirection: "column",
     rowGap: 15,
-    padding: 16,
-    paddingLeft: 20,
-    paddingRight: 20,
+    padding: 18,
+    paddingLeft: 26,
+    paddingRight: 26,
     borderBottomColor: "#EAEAEA",
     borderBottomWidth: 1,
   },
-  cardHeaderText: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 3
-  },
-  cardHeaderTitle: {
-    fontSize: 15.5,
-    fontWeight: "600"
-  },
-  cardHeaderBio: {
-    fontSize: 11.5,
-    color: "#7F7F88"
-  }
 });
 
 export default OwnerScreen;

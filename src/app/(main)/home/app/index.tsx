@@ -33,10 +33,12 @@ export default class AppScreen extends React.Component {
 
   _renderItem = ({ item }: { item: Slide }) => {
     return (
-      <View className="flex flex-col items-center gap-4">
-        <Image className="w-28 h-[120px]" source={VectorImage} />
-        <Text className="font-bold text-3xl mt-10">{item.title}</Text>
-        <Text className="text-lg text-center text-[#9F9F9F] leading-5">
+      <View className="flex flex-col items-center gap-4 grow mb-20">
+        <View className="grow flex items-center justify-center">
+          <Image className="w-28 h-[120px]" source={VectorImage} />
+        </View>
+        <Text className="font-bold text-3xl">{item.title}</Text>
+        <Text className="text-lg text-center text-muted-foreground leading-5">
           {item.text}
         </Text>
       </View>
@@ -69,7 +71,7 @@ export default class AppScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, paddingHorizontal: 30, paddingVertical: 50 }}>
+      <View style={{ flex: 1, paddingHorizontal: 30, paddingVertical: 100 }}>
         <View
           style={{
             flexDirection: "row",
@@ -77,34 +79,45 @@ export default class AppScreen extends React.Component {
             justifyContent: "center",
           }}
         >
-          <Image
-            style={{ width: 24, height: "100%" }}
-            source={LogoImage}
-          />
+          <Image style={{ width: 24, height: "100%" }} source={LogoImage} />
           <Text
             style={{
               fontWeight: "bold",
               fontSize: 32,
               color: "#00C978",
               letterSpacing: -2,
-              marginTop: -5
+              marginTop: -5,
             }}
           >
             canbase
           </Text>
         </View>
 
-        <View style={{ flex: 1, marginTop: 60 }}>
+        <View style={{ flex: 1, marginTop: 65 }}>
           <AppIntroSlider
             data={slides}
             renderItem={this._renderItem}
             onSlideChange={this.handleSlideChange}
             showNextButton={false}
             showDoneButton={false}
+            activeDotStyle={{
+              backgroundColor: "#111",
+              width: 8,
+              height: 8,
+              borderRadius: 4,
+            }}
+            dotStyle={{
+              backgroundColor: "#D3D3D9",
+              width: 8,
+              height: 8,
+              borderRadius: 4,
+            }}
           />
         </View>
 
-        <View style={{ flexDirection: "column", alignItems: "center", gap: 20 }}>
+        <View
+          style={{ flexDirection: "column", alignItems: "center", gap: 20 }}
+        >
           <Pressable
             style={{
               width: "100%",

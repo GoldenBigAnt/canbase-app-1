@@ -13,18 +13,18 @@ const ClubStatus: React.FC<ClubStatusPropsInterface> = ({
   return (
     <View
       className={cn(
-        "flex flex-row items-center gap-2 px-5 py-3",
+        "flex flex-row items-center gap-5 px-5 py-3",
         !last && "border-b border-[#EAEAEA]"
       )}
     >
       {done ? (
-        <Feather name="check-circle" size={14} color="#00C978" />
+        <Feather name="check-circle" size={16} color="#00C978" />
       ) : (
-        <Feather name="circle" size={14} color="#00C978" />
+        <Feather name="circle" size={16} color="#00C978" />
       )}
-      <View>
-        <Text className="text-sm font-bold">{title}</Text>
-        <Text className="text-[10px] text-[#9F9F9F]">{content}</Text>
+      <View className="flex flex-col space-y-1">
+        <Text className="text-base font-medium">{title}</Text>
+        <Text className="text-sm text-[#9F9F9F]">{content}</Text>
       </View>
     </View>
   );

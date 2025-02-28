@@ -98,11 +98,12 @@ const DashboardLayout: React.FC = () => {
         name="app"
         options={
           !isEmpty(user?.club)
-            ? { href: null }
+            ? { href: null, tabBarStyle: { display: "none" } }
             : {
                 tabBarIcon: (props: any) => (
                   <Feather name="home" size={24} color={props.color} />
                 ),
+                tabBarStyle: { display: "none" },
               }
         }
       />

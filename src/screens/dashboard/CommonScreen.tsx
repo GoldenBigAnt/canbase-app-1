@@ -4,15 +4,17 @@ import { Text, View } from "react-native";
 import { useAppSelector } from "@/store/hook";
 import { ClubCard } from "@/components";
 import { clubCardData } from "@/lib/constant";
+import Constants from "expo-constants";
 
 const BadgeImage = require("@/assets/images/badge.png");
 
 const CommonScreen: React.FC = () => {
   const { user } = useAppSelector((state) => state.user);
-
+  const top = Constants.statusBarHeight;
+  
   return (
     <View className="w-full h-full">
-      <View className="relative overflow-hidden bg-[#00C978] rounded-b-xl">
+      <View className="relative overflow-hidden bg-[#00C978] rounded-b-xl" style={{ paddingTop: top }}>
         <Text className="p-5 font-extrabold	text-2xl text-white">
           Hallo, {user?.username}
         </Text>

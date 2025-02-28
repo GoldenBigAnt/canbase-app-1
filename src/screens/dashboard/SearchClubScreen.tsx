@@ -16,6 +16,7 @@ import { getAllClubs } from "@/actions/club";
 import { Card, Club, SearchMap } from "@/components";
 import { compareStrings } from "@/lib/functions";
 import { cn } from "@/lib/utils";
+import { statusBarHeight } from "@/lib/constant";
 
 const BadgeImage = require("@/assets/images/badge.png");
 
@@ -167,8 +168,11 @@ const SearchClubScreen: React.FC = () => {
 
   return (
     <View className="w-full h-full">
-      <View className="relative overflow-hidden bg-[#00C978] rounded-b-xl">
-        <View className="p-5 flex flex-col space-y-2">
+      <View
+        className="relative overflow-hidden bg-[#00C978] rounded-b-xl"
+        style={{ paddingTop: statusBarHeight }}
+      >
+        <View className="p-5 flex flex-col gap-2">
           <Text className="font-extrabold	text-2xl text-white">
             Social Club finden
           </Text>
@@ -190,7 +194,12 @@ const SearchClubScreen: React.FC = () => {
         />
       </View>
       {search.length > 0 && (
-        <Card className="absolute top-24 left-5 bg-white p-0 z-20">
+        <Card
+          className="absolute left-5 bg-white p-0 z-20"
+          style={{
+            top: 96 + statusBarHeight,
+          }}
+        >
           <Pressable
             className="px-2 py-1.5 text-base rounded-sm"
             onPress={() => handleSearch("postcode")}
@@ -212,8 +221,9 @@ const SearchClubScreen: React.FC = () => {
         </Card>
       )}
       <View
-        className="absolute top-28 left-2 flex flex-row items-center p-1 bg-white rounded-md z-10"
+        className="absolute left-2 flex flex-row items-center p-1 bg-white rounded-md z-10"
         style={{
+          top: 112 + statusBarHeight,
           shadowColor: "#000",
           shadowOpacity: 0.25,
           shadowRadius: 5,
@@ -265,7 +275,7 @@ const SearchClubScreen: React.FC = () => {
         </View>
       ) : (
         <FlatList
-          className="mt-12"
+          className="mt-16"
           data={data?.pages.flatMap((page) => page.data) || []}
           keyExtractor={(item) => item.clubID}
           onEndReached={handleEndReached}

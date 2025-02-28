@@ -168,11 +168,14 @@ module.exports = {
           info: 'rgb(var(--color-indicator-info)/<alpha-value>)',
           error: 'rgb(var(--color-indicator-error)/<alpha-value>)',
         },
+        'muted': {
+          'foreground': 'hsl(var(--muted-foreground)/<alpha-value>)',
+        }
       },
       fontFamily: {
         heading: undefined,
         body: undefined,
-        mono: undefined,
+        mono: ['SometypeMono', 'monospace'],
         roboto: ['Roboto', 'sans-serif'],
       },
       fontWeight: {
