@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
 import { ClubCardPropsInterface } from "@/types/component";
+import Constants from "expo-constants";
 
 export const clubCardData: ClubCardPropsInterface[] = [
   {
@@ -21,3 +22,5 @@ export const clubCardData: ClubCardPropsInterface[] = [
     route: "/(main)/home/search",
   },
 ];
+
+export const statusBarHeight = Constants.statusBarHeight;

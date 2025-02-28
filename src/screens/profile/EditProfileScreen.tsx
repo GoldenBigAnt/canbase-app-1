@@ -18,12 +18,15 @@ import { Card, ProfileInput } from "@/components";
 import { message } from "@/lib/utils";
 import { UPLOAD_URI } from "@/config/env";
 import { MyProfileFormDataType } from "@/types/form";
+import Constants from "expo-constants";
 
 const BadgeImage = require("@/assets/images/badge.png");
 
 const EditProfileScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
+
+  const top = Constants.statusBarHeight;  
 
   const [image, setImage] = useState<string>();
   const [loading, setLoading] = useState(false);
@@ -81,7 +84,7 @@ const EditProfileScreen: React.FC = () => {
 
   return (
     <View className="w-full h-full">
-      <View className="relative justify-center overflow-hidden bg-[#00C978] rounded-b-xl">
+      <View className="relative justify-center overflow-hidden bg-[#00C978] rounded-b-xl" style={{ paddingTop: top }}>
         <Pressable className="absolute m-5 z-10" onPress={() => router.back()}>
           <MaterialIcons name="keyboard-arrow-left" size={24} color="white" />
         </Pressable>
@@ -94,8 +97,8 @@ const EditProfileScreen: React.FC = () => {
           placeholder="badge"
         />
       </View>
-      <ScrollView>
-        <Card className="m-5 p-0">
+      <ScrollView className="p-5">
+        <Card className="p-0">
           <View className="flex flex-col space-y-1 p-5 border-b border-[#EAEAEA]">
             <Text className="text-xl font-semibold">Profil</Text>
             <Text className="text-sm text-[#9F9F9F]">
@@ -113,8 +116,8 @@ const EditProfileScreen: React.FC = () => {
               ) : (
                 <View className="w-36 h-36 flex flex-col justify-center items-center bg-[#F8F8F8] rounded-full">
                   <MaterialIcons name="image" size={20} color="#9F9F9F" />
-                  <Text className="text-sm text-[#9F9F9F]">
-                    .jpg, .jpeg, .png, .webp
+                  <Text className="text-sm text-center text-muted-foreground">
+                    .jpg, .jpeg,{'\n'}.png, .webp
                   </Text>
                 </View>
               )}
@@ -135,9 +138,9 @@ const EditProfileScreen: React.FC = () => {
                 </View>
               </Pressable>
             </View>
-            <View className="w-full flex flex-col space-y-5">
-              <View className="flex flex-col space-y-3">
-                <View className="space-y-2">
+            <View className="w-full flex flex-col gap-5">
+              <View className="flex flex-col gap-3">
+                <View className="gap-1">
                   <Text className="text-base">Name*</Text>
                   <View>
                     <Controller
@@ -162,7 +165,7 @@ const EditProfileScreen: React.FC = () => {
                     )}
                   </View>
                 </View>
-                <View className="space-y-2">
+                <View className="gap-1">
                   <Text className="text-base">Alias</Text>
                   <View>
                     <Controller
@@ -181,7 +184,7 @@ const EditProfileScreen: React.FC = () => {
                     />
                   </View>
                 </View>
-                <View className="space-y-2">
+                <View className="gap-1">
                   <Text className="text-base">Geburtsdatum*</Text>
                   <View>
                     <Controller
@@ -206,7 +209,7 @@ const EditProfileScreen: React.FC = () => {
                     )}
                   </View>
                 </View>
-                <View className="space-y-2">
+                <View className="gap-1">
                   <Text className="text-base">E-Mail*</Text>
                   <View>
                     <Controller
@@ -231,7 +234,7 @@ const EditProfileScreen: React.FC = () => {
                     )}
                   </View>
                 </View>
-                <View className="space-y-2">
+                <View className="gap-1">
                   <Text className="text-base">Telefon</Text>
                   <View>
                     <Controller
@@ -250,7 +253,7 @@ const EditProfileScreen: React.FC = () => {
                     />
                   </View>
                 </View>
-                <View className="space-y-2">
+                <View className="gap-1">
                   <Text className="text-base">Adresse</Text>
                   <View>
                     <Controller

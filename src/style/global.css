@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* font variables */
+@font-face {
+  font-family: 'SometypeMono';
+  src: url('./fonts/SometypeMono.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SometypeMono';
+  src: url('./fonts/SometypeMono-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@layer base {
+  :root {
+    --muted-foreground: 240 3.8% 46.1%;
+  }
+}

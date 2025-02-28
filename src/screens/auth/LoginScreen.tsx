@@ -8,6 +8,7 @@ import { WEBVIEW_LOGIN } from "@/config/env";
 import { View, Text } from 'react-native';
 
 const LoginScreen: React.FC = () => {
+  const top = Constants.statusBarHeight;
   const injectedJavaScript = `
     (function() {
       const originalXHR = window.XMLHttpRequest;
@@ -40,6 +41,8 @@ const LoginScreen: React.FC = () => {
   const handleMessage = async (event: any) => {
     try {
       const response = JSON.parse(event.nativeEvent.data);
+      console.log(response);
+
 
       if (response.success && response.token && response.msg) {
         await saveData("token", response.token);
@@ -60,7 +63,7 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <View className="w-full h-full overflow-hidden">
+    <View className="w-full h-full overflow-hidden" style={{ paddingTop: top }}>
       <WebView
         javaScriptEnabled={true}
         domStorageEnabled={true}
